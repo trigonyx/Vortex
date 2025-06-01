@@ -123,7 +123,7 @@ public class VortexSystem: Codable, Identifiable, Equatable, Hashable {
     /// Option to calculate custom velocities
     /// Is given a `Double` from `0` to `1` representing the age of a particle and the current velocity
     /// returning the velocity at that age
-    public var customVelocity: ((Double, SIMD2<Double>) -> SIMD2<Double>)?
+    public var customVelocity: ((Particle) -> SIMD2<Double>)?
 
     /// The base direction to launch new particles, where 0 is directly up.
     public var angle: Angle
@@ -171,7 +171,7 @@ public class VortexSystem: Codable, Identifiable, Equatable, Hashable {
     /// Option to calculate custom sizes
     /// Is given a `Double` from `0` to `1` representing the age of a particle and the current size
     ///  returning the size at that age
-    public var customSize: ((Double, Double) -> Double)?
+    public var customSize: ((Particle) -> Double)?
 
     /// How how much bigger or smaller this particle should be by the time it is removed.
     /// This is used as a multiplier based on the particle's initial size, so if it starts at size
@@ -260,7 +260,7 @@ public class VortexSystem: Codable, Identifiable, Equatable, Hashable {
         lifespanVariation: TimeInterval = 0,
         speed: Double = 1,
         speedVariation: Double = 0,
-        customVelocity: ((Double, SIMD2<Double>) -> SIMD2<Double>)? = nil,
+        customVelocity: ((Particle) -> SIMD2<Double>)? = nil,
         angle: Angle = .zero,
         angleRange: Angle = .zero,
         acceleration: SIMD2<Double> = [0, 0],
@@ -272,7 +272,7 @@ public class VortexSystem: Codable, Identifiable, Equatable, Hashable {
         colors: ColorMode = .single(.white),
         size: Double = 1,
         sizeVariation: Double = 0,
-        customSize: ((Double, Double) -> Double)? = nil,
+        customSize: ((Particle) -> Double)? = nil,
         sizeMultiplierAtDeath: Double = 1,
         stretchFactor: Double = 1
     ) {

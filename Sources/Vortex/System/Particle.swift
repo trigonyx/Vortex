@@ -19,6 +19,9 @@ extension VortexSystem {
 
         /// The current speed of this particle.
         var speed: SIMD2<Double>
+        
+        /// The initial speed the particle was created at
+        var initialSpeed: SIMD2<Double>
 
         /// The time this particle was created.
         var birthTime: TimeInterval
