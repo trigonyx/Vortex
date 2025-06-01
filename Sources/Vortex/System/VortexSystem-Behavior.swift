@@ -66,6 +66,11 @@ extension VortexSystem {
             }
 
             // Update particle position
+
+            if let customVelocity {
+                particle.speed = customVelocity(lifeProgress, particle.speed)
+            }
+
             particle.position.x += particle.speed.x * delta * drawDivisor
             particle.position.y += particle.speed.y * delta
 
@@ -79,10 +84,14 @@ extension VortexSystem {
 
             particle.currentColor = particle.colors.lerp(by: lifeProgress)
 
-            particle.currentSize = particle.initialSize.lerp(
-                to: particle.initialSize * sizeMultiplierAtDeath,
-                amount: lifeProgress
-            )
+            if let customSize {
+                particle.currentSize = customSize(lifeProgress, particle.currentSize)
+            } else {
+                particle.currentSize = particle.initialSize.lerp(
+                    to: particle.initialSize * sizeMultiplierAtDeath,
+                    amount: lifeProgress
+                )
+            }
 
             if age >= particle.lifespan {
                 spawn(from: particle, event: .onDeath)
