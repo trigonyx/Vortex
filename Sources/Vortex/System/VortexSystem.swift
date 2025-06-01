@@ -260,6 +260,7 @@ public class VortexSystem: Codable, Identifiable, Equatable, Hashable {
         lifespanVariation: TimeInterval = 0,
         speed: Double = 1,
         speedVariation: Double = 0,
+        customVelocity: ((Double, SIMD2<Double>) -> SIMD2<Double>)? = nil,
         angle: Angle = .zero,
         angleRange: Angle = .zero,
         acceleration: SIMD2<Double> = [0, 0],
@@ -271,6 +272,7 @@ public class VortexSystem: Codable, Identifiable, Equatable, Hashable {
         colors: ColorMode = .single(.white),
         size: Double = 1,
         sizeVariation: Double = 0,
+        customSize: ((Double, Double) -> Double)? = nil,
         sizeMultiplierAtDeath: Double = 1,
         stretchFactor: Double = 1
     ) {
@@ -289,6 +291,7 @@ public class VortexSystem: Codable, Identifiable, Equatable, Hashable {
         self.lifespanVariation = lifespanVariation
         self.speed = speed
         self.speedVariation = speedVariation
+        self.customVelocity = customVelocity
         self.angle = angle
         self.acceleration = acceleration
         self.angleRange = angleRange
@@ -300,6 +303,7 @@ public class VortexSystem: Codable, Identifiable, Equatable, Hashable {
         self.colors = colors
         self.size = size
         self.sizeVariation = sizeVariation
+        self.customSize = customSize
         self.sizeMultiplierAtDeath = sizeMultiplierAtDeath
         self.stretchFactor = stretchFactor
 
@@ -328,6 +332,7 @@ public class VortexSystem: Codable, Identifiable, Equatable, Hashable {
             lifespanVariation: lifespanVariation,
             speed: speed,
             speedVariation: speedVariation,
+            customVelocity: customVelocity,
             angle: angle,
             angleRange: angleRange,
             acceleration: acceleration,
@@ -339,6 +344,7 @@ public class VortexSystem: Codable, Identifiable, Equatable, Hashable {
             colors: colors,
             size: size,
             sizeVariation: sizeVariation,
+            customSize: customSize,
             sizeMultiplierAtDeath: sizeMultiplierAtDeath,
             stretchFactor: stretchFactor
         )
