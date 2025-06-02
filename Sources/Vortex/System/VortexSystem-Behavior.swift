@@ -158,6 +158,7 @@ extension VortexSystem {
         let newParticle = Particle(
             tag: tags.randomElement() ?? "",
             position: particlePosition,
+            initialPosition: particlePosition,
             speed: speed,
             initialSpeed: speed,
             birthTime: lastUpdate,

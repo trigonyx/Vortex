@@ -16,6 +16,9 @@ extension VortexSystem {
 
         /// The current location of this particle, specified in unit space.
         public internal(set) var position: SIMD2<Double>
+        
+        /// The initial position the particle was created at
+        public internal(set) var initialPosition: SIMD2<Double>
 
         /// The current speed of this particle.
         public internal(set) var speed: SIMD2<Double>
